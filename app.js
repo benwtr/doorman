@@ -66,7 +66,7 @@ function isPublicPath(req) {
 
 function checkUser(req, res, next) {
   if(userCanAccess(req) || isPublicPath(req)) {
-    if (req.session.auth.github.user.login) {
+    if (req.session.auth) {
       res.cookie('ghuser', req.session.auth.github.user.login)
     }
     proxyMiddleware(req, res, next);
